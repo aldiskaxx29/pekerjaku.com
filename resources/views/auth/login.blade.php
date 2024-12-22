@@ -18,19 +18,24 @@
       }
 
       .container {
-          width: 100%;
-          max-width: 400px;
-          background: #fff;
-          padding: 30px;
-          border-radius: 10px;
-          box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-          text-align: center;
+        width: 100%;
+        max-width: 400px;
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ddd;
+        margin: 40px auto;
+        text-align: center;
       }
 
       .form-container {
-          position: relative;
-          width: 100%;
+        overflow-y: auto;
+        max-height: 80vh;
+        scrollbar-width: thin;
+        scrollbar-color: #666 #f9f9f9;
       }
+
 
       .form {
           display: none;
@@ -75,6 +80,21 @@
       }
 
       .input-group input:focus {
+          border-color: #6e8efb;
+          box-shadow: 0 0 5px rgba(110, 142, 251, 0.5);
+      }
+
+      .input-group textarea {
+          width: 100%;
+          padding: 10px;
+          font-size: 14px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          box-sizing: border-box;
+          outline: none;
+      }
+
+      .input-group textarea:focus {
           border-color: #6e8efb;
           box-shadow: 0 0 5px rgba(110, 142, 251, 0.5);
       }
@@ -149,14 +169,71 @@
       .selection .btn {
           margin-bottom: 10px;
       }
+
+    .form-double-column {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .input-group {
+        flex-basis: 48%;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .alert-box {
+    background-color: #EF4A31;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 20px auto;
+    text-align: center;
+    position: relative;
+    }
+
+    .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    }
+
+    .alert-message {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    }
+
+
+
     </style>
 </head>
 <body>
     <div class="container">
         <div class="form-container">
             <!-- Login Form -->
-            <form id="login-form" method="POST" action="{{ route('login.post') }}" class="form active">
+            <form id="login-form" method="POST" action="#" class="form active">
                 @csrf
+
+                <div class="alert-box warning" id="alert-box">
+                    <span class="close">&times;</span>
+                    <div class="alert-message">Username dan Password Salah!</div>
+                </div>
+
                 <h2>Login</h2>
                 <p>Welcome back! Please login to your account.</p>
                 <div class="input-group">
@@ -181,26 +258,62 @@
                 <h2>Choose Account Type</h2>
                 <p>Select whether you are an Employer or a Worker to proceed.</p>
                 <div class="actions">
-                    <button class="btn" id="select-employer">Employer</button>
-                    <button class="btn" id="select-worker">Worker</button>
+                    <button class="btn" id="select-employer" value="2">Employer</button>
+                    <button class="btn" id="select-worker" value="3">Worker</button>
                 </div>
             </div>
 
             <!-- Register Form -->
             <form id="register-form" class="form">
+                @csrf
                 <h2>Register</h2>
                 <p>Create your account and join us today!</p>
-                <div class="input-group">
-                    <label for="register-name">Full Name</label>
-                    <input type="text" id="register-name" placeholder="Enter your full name" required>
+                <input type="hidden" class="level_user" id="level_user" name="level_user">
+                <div class="form-double-column">
+                    <div class="input-group">
+                      <label for="first-name">First Name</label>
+                      <input type="text" name="first_name" id="first-name" placeholder="Enter your first name" required>
+                    </div>
+                    <div class="input-group">
+                      <label for="last-name">Last Name</label>
+                      <input type="text" name="last_name" id="last-name" placeholder="Enter your last name" required>
+                    </div>
                 </div>
                 <div class="input-group">
                     <label for="register-email">Email</label>
-                    <input type="email" id="register-email" placeholder="Enter your email" required>
+                    <input type="email" name="email" id="register-email" placeholder="Enter your email" required>
                 </div>
                 <div class="input-group">
                     <label for="register-password">Password</label>
-                    <input type="password" id="register-password" placeholder="Create a password" required>
+                    <input type="password" name="password" id="register-password" placeholder="Create a password" required>
+                </div>
+                <div class="input-group">
+                    <label for="register-address">Address</label>
+                    <textarea name="address" id="register-address" placeholder="Create a address" cols="30" rows="10"></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="register-password">District</label>
+                    <input type="text" name="district" id="register-district" placeholder="Create a district" required>
+                </div>
+                <div class="input-group">
+                    <label for="register-password">City</label>
+                    <input type="text" name="regency_city" id="register-city" placeholder="Create a city" required>
+                </div>
+                <div class="input-group">
+                    <label for="register-password">Province</label>
+                    <input type="text" name="province" id="register-province" placeholder="Create a province" required>
+                </div>
+                <div class="input-group">
+                    <label for="register-password">Postal Code</label>
+                    <input type="text" name="postal_code" id="register-postal" placeholder="Create a poatal code" required>
+                </div>
+                <div class="input-group">
+                    <label for="register-password">Phone Number</label>
+                    <input type="text" name="phone_number" id="register-phone" placeholder="Create a phone number" required>
+                </div>
+                <div class="input-group">
+                    <label for="register-password">WhatsApp Number</label>
+                    <input type="text" name="number_whatsapp" id="register-whatsaapp" placeholder="Create a phone number" required>
                 </div>
                 <div class="actions">
                     <button type="submit" class="btn">Register</button>
@@ -212,6 +325,7 @@
         </div>
     </div>
 
+    <script src="{{ asset('./js/jquery-3.3.1.min.js') }}"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
           const loginForm = document.getElementById('login-form');
@@ -250,6 +364,85 @@
               loginForm.classList.add('active');
           });
       });
+
+
+        const alertBox = document.getElementById('alert-box');
+        const closeBtn = alertBox.querySelector('.close');
+
+        closeBtn.addEventListener('click', () => {
+        alertBox.style.display = 'none';
+        });
+
+        // Fungsi untuk menampilkan alert
+        $('#alert-box').hide();
+        function showAlert(message, jenis) {
+            alertBox.className = 'alert-box ' + jenis;
+            alertBox.querySelector('.alert-message').innerHTML = message;
+            alertBox.style.display = 'block';
+            setTimeout(() => alertBox.style.display = 'none', 3000);
+        }
+
+        // Contoh penggunaan
+
+      $('#select-employer').click(function(){
+        console.log($(this).val())
+        let value = $(this).val();
+        // localStorage.setItem("level_user", value);
+        $('#level_user').val(value)
+      })
+
+      $('#select-worker').click(function(){
+        let value = $(this).val();
+        $('#level_user').val(value)
+        // localStorage.setItem("level_user", value);
+      })
+
+      $('#login-form').submit(function(e){
+        e.preventDefault();
+        console.log('submit');
+        const value = $('#login-form').serialize();
+
+        $.ajax({
+            url: '/api/login',
+            type: 'POST',
+            data: value,
+            success: function(response) {
+                console.log(response);
+                if (response.status) {
+                    window.location.href = '/';
+                } else {
+                    console.log('error',response)
+                    showAlert(response?.message, 'warning');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr.responseText);
+            }
+        })
+      });
+
+      $('#register-form').submit(function(e){
+        e.preventDefault();
+
+        const value = $('#register-form').serialize();
+        console.log(value)
+        $.ajax({
+            url: '/api/registrasi',
+            type:'POST',
+            data: value,
+            success: function(response){
+                if (response.status) {
+                    window.location.href = '/login';
+                } else {
+                    console.log('error',response)
+                    showAlert(response?.message, 'warning');
+                }
+            },
+            error: function(xhr, status, error){
+                console.log(xhr.responseText)
+            }
+        })
+      })
     </script>
 </body>
 </html>

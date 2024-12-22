@@ -22,7 +22,15 @@
             </ul>
         </div>
         <div class="header__top__right__auth">
-            <a href="#"><i class="fa fa-user"></i> Login</a>
+            @if(Auth::check())
+                <!-- User sudah login -->
+                {{-- Selamat datang, {{ /Auth::user()->name }} --}}
+                <a href="#"><i class="fa fa-user"></i> Logout</a>
+            @else
+                <!-- User belum login -->
+                <a href="#"><i class="fa fa-user"></i> Login</a>
+            @endif
+
         </div>
     </div>
     <nav class="humberger__menu__nav mobile-menu">
@@ -97,7 +105,7 @@
                                 <button type="submit" class="btn btn-link" style="border: none; background: none; color: black; cursor: pointer;">
                                     <i class="fa fa-sign-out"></i> Logout
                                 </button>
-                            </form>                            
+                            </form>
                             @else
                                 <a href="{{ route('login') }}"><i class="fa fa-user"></i> Login</a>
                             @endif

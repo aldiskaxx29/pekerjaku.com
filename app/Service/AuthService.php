@@ -29,7 +29,7 @@ class AuthService {
         'email.required' => 'Please enter a email.',
         'password.required' => 'Please enter a password.'
     ];
-    
+
     $validator = Validator::make($this->request->all(),$rules,$messages);
     if($validator->fails())
     {
@@ -55,7 +55,7 @@ class AuthService {
                 'status' => true,
                 'data' => $user,
                 'access_token' => $token
-            ]);   
+            ]);
         } else {
             return response()->json([
                 'status' => false,
@@ -93,7 +93,7 @@ class AuthService {
       $path = $this->request->file('image')->storeAs('images', $name, 'public');
     }
 
-    $params['image'] = $path;
+    $params['image'] = $path ?? '';
 
     $this->authRepository->registrasi($params);
 

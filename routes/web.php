@@ -9,6 +9,7 @@ use App\Http\Controllers\LowonganController;
 use App\Http\Controllers\MajikanController;
 use App\Http\Controllers\PekerjaController;
 use App\Http\Controllers\ProsedurController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +43,10 @@ Route::prefix('majikan')->group(function () {
     Route::get('data-pekerja', [MajikanController::class, 'dataPekerja'])->name('majikan.data_pekerja');
     Route::get('data-diri', [MajikanController::class, 'dataDiri'])->name('majikan.data_diri');
     Route::get('data-order', [MajikanController::class, 'dataOrder'])->name('majikan.order');
+});
+
+Route::prefix('admin')->group(function(){
+    Route::get('dashboard', [AdminController::class, 'index']);
 });
 
 Route::get('/pekerja', [PekerjaController::class, 'index'])->name('pekerja');

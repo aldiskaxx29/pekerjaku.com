@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('phone_number')->nullable();
             $table->string('number_whatsapp');
             $table->string('image')->nullable();
+            $table->string('pay')->nullable();
             $table->string('level_user')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
