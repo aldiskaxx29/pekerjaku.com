@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('pekerja_id')->references('id')->on('pekerjas')->onDelete('cascade');
+            $table->string('full_name');
+            $table->string('email');
+            $table->text('address');
+            $table->string('phone_number');
             $table->integer('status')->default(0);
             $table->text('note')->nullable();
             $table->timestamps();

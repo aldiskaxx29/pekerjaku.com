@@ -33,6 +33,7 @@ Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::prefix('pekerja')->group(function () {
     Route::get('dashboard', [PekerjaController::class, 'dashboard'])->name('pekerja.dashboard');
     Route::get('data-diri', [PekerjaController::class, 'dataDiri'])->name('pekerja.data_diri');
+    Route::get('lowongan', [PekerjaController::class, 'lowongan'])->name('pekerja.lowongan');
 });
 
 Route::get('lowongan', [LowonganController::class, 'index'])->name('lowongan');
@@ -46,7 +47,10 @@ Route::prefix('majikan')->group(function () {
 });
 
 Route::prefix('admin')->group(function(){
-    Route::get('dashboard', [AdminController::class, 'index']);
+    Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('pekerja', [AdminController::class, 'pekerja'])->name('admin.pekerja');
+    Route::get('user', [AdminController::class, 'user'])->name('admin.user');
+    Route::get('lowongan', [AdminController::class, 'lowongan'])->name('admin.lowongan');
 });
 
 Route::get('/pekerja', [PekerjaController::class, 'index'])->name('pekerja');

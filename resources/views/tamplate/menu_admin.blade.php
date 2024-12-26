@@ -27,10 +27,10 @@
     </div>
     <nav class="humberger__menu__nav mobile-menu">
         <ul style="">
-            <li class="active"><a href="{{ route('/') }}">Home</a></li>
-            <li><a href="{{ route('blog') }}">User</a></li>
-            <li><a href="{{ route('prosedur') }}">Pekerja</a></li>
-            <li><a href="{{ route('lowongan') }}">Lowongan</a></li>
+            <li class="active"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+            <li><a href="{{ route('admin.user') }}">User</a></li>
+            <li><a href="{{ route('admin.pekerja') }}">Pekerja</a></li>
+            <li><a href="{{ route('admin.lowongan') }}">Lowongan</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
@@ -108,10 +108,10 @@
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul style="">
-                        <li class="active"><a href="{{ route('/') }}">Home</a></li>
-                        <li><a href="{{ route('blog') }}">User</a></li>
-                        <li><a href="{{ route('prosedur') }}">Pekerja</a></li>
-                        <li><a href="{{ route('lowongan') }}">Lowongan</a></li>
+                        <li class="active"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+                        <li><a href="{{ route('admin.user') }}">User</a></li>
+                        <li><a href="{{ route('admin.pekerja') }}">Pekerja</a></li>
+                        <li><a href="{{ route('admin.lowongan') }}">Lowongan</a></li>
                     </ul>
                 </nav>
             </div>

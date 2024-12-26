@@ -4,21 +4,25 @@ namespace App\Service;
 
 use App\Repository\PekerjaRepository;
 use Illuminate\Http\Request;
+use App\Repository\UserRepository;
 
 class PekerjaService {
   protected $pekerjaRepository;
   protected $request;
+  protected $userRepository;
 
   public function __construct(
     PekerjaRepository $pekerjaRepository,
-    Request $request
+    Request $request,
+    UserRepository $userRepository
   )
   {
     $this->pekerjaRepository = $pekerjaRepository;
     $this->request = $request;
+    $this->userRepository = $userRepository;
   }
 
-  public function getALls(){
+  public function getAlls(){
     return $this->pekerjaRepository->getAll();
   }
 
@@ -118,5 +122,9 @@ class PekerjaService {
         'message' => $e->getMessage()
       ]);
     }
+  }
+
+  public function pekerja(){
+    return $this->userRepository->pekerja();
   }
 }

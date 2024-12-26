@@ -46,8 +46,8 @@
                 </ul>
             </li>
             <li><a href="{{ route('blog') }}">Blog</a></li>
-            <li><a href="{{ route('prosedur') }}">Prosedur</a></li>
-            <li><a href="{{ route('lowongan') }}">Lowongan</a></li>
+            {{-- <li><a href="{{ route('prosedur') }}">Prosedur</a></li>
+            <li><a href="{{ route('lowongan') }}">Lowongan</a></li> --}}
             <li><a href="{{ route('about') }}">About</a></li>
             <li><a href="{{ route('contact') }}">Contact</a></li>
         </ul>
@@ -145,15 +145,7 @@
                     </ul>
                 </nav>
             </div>
-            <div class="col-lg-3">
-                <div class="header__cart">
-                    {{-- <ul>
-                        <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-                    </ul>
-                    <div class="header__cart__price">item: <span>$150.00</span></div> --}}
-                </div>
-            </div>
+
         </div>
         <div class="humberger__open">
             <i class="fa fa-bars"></i>

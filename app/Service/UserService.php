@@ -35,6 +35,10 @@ class UserService {
     }
   }
 
+  public function getAlls(){
+    return $this->userRepository->getAll();
+  }
+
   public function getOne(){
     $id = $this->request->input('id');
 

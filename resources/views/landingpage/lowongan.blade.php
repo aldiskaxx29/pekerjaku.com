@@ -4,38 +4,72 @@
     <!-- Hero Section Begin -->
     <section class="categories">
       <div class="container">
-          <div>
-            <h4>Lowongan Kerja Rumah Tangga</h4>
-          </div>
+          {{-- <div>
+            <h4 class="text-center">Lowongan Kerja Rumah Tangga</h4>
+          </div> --}}
           <div class="row">
-              <div class="categories__slider owl-carousel">
-                  {{-- @foreach ($kategori as $item)
-                      <div class="col-lg-3">
-                          <div class="categories__item set-bg" data-setbg="img/content/kategori.jpg">
-                              <h5><a href="#">{{ $item->name }}</a></h5>
-                          </div>
-                      </div>
-                  @endforeach --}}
-                  {{-- <div class="col-lg-3">
-                      <div class="categories__item set-bg" data-setbg="img/content/kategori.jpg">
-                          <h5><a href="#">Dried Fruit</a></h5>
-                      </div>
-                  </div>
-                  <div class="col-lg-3">
-                      <div class="categories__item set-bg" data-setbg="img/content/kategori.jpg">
-                          <h5><a href="#">Vegetables</a></h5>
-                      </div>
-                  </div>
-                  <div class="col-lg-3">
-                      <div class="categories__item set-bg" data-setbg="img/content/kategori.jpg">
-                          <h5><a href="#">drink fruits</a></h5>
-                      </div>
-                  </div>
-                  <div class="col-lg-3">
-                      <div class="categories__item set-bg" data-setbg="img/content/kategori.jpg">
-                          <h5><a href="#">drink fruits</a></h5>
-                      </div>
-                  </div> --}}
+              <div class="col-md-6 offset-3">
+                <div class="form-group">
+                    <label for="">Nama Lengkap</label>
+                    <input type="text" name="name_lengkap" class="form-control" id="name_lengkap" placeholder="Nama Lengkap">
+                </div>
+                <div class="form-group">
+                    <label for="">Nama Lengkap</label>
+                    <input type="text" name="name_lengkap" class="form-control" id="name_lengkap" placeholder="Nama Lengkap">
+                </div>
+                <div class="form-group">
+                    <label for="">Nama Lengkap</label>
+                    <input type="text" name="name_lengkap" class="form-control" id="name_lengkap" placeholder="Nama Lengkap">
+                </div>
+                <div class="form-group">
+                    <label for="">Nama Lengkap</label>
+                    <input type="text" name="name_lengkap" class="form-control" id="name_lengkap" placeholder="Nama Lengkap">
+                </div>
+                <div class="form-group">
+                    <label for="">Nama Lengkap</label>
+                    <input type="text" name="name_lengkap" class="form-control" id="name_lengkap" placeholder="Nama Lengkap">
+                </div>
+                <div class="form-group">
+                    <label for="">Nama Lengkap</label>
+                    <input type="text" name="name_lengkap" class="form-control" id="name_lengkap" placeholder="Nama Lengkap">
+                </div>
+                <div class="form-group">
+                    <label for="">Nama Lengkap</label>
+                    <input type="text" name="name_lengkap" class="form-control" id="name_lengkap" placeholder="Nama Lengkap">
+                </div>
+                <div class="form-group">
+                    <label for="">Nama Lengkap</label>
+                    <input type="text" name="name_lengkap" class="form-control" id="name_lengkap" placeholder="Nama Lengkap">
+                </div>
+                <div class="form-group">
+                    <label for="">Nama Lengkap</label>
+                    <input type="text" name="name_lengkap" class="form-control" id="name_lengkap" placeholder="Nama Lengkap">
+                </div>
+                <div class="form-group">
+                    <label for="">Nama Lengkap</label>
+                    <input type="text" name="name_lengkap" class="form-control" id="name_lengkap" placeholder="Nama Lengkap">
+                </div>
+                <div class="form-group">
+                    <label for="">Nama Lengkap</label>
+                    <input type="text" name="name_lengkap" class="form-control" id="name_lengkap" placeholder="Nama Lengkap">
+                </div>
+                <div class="form-group">
+                    <label for="">Nama Lengkap</label>
+                    <input type="text" name="name_lengkap" class="form-control" id="name_lengkap" placeholder="Nama Lengkap">
+                </div>
+                <div class="form-group">
+                    <label for="">Nama Lengkap</label>
+                    <input type="text" name="name_lengkap" class="form-control" id="name_lengkap" placeholder="Nama Lengkap">
+                </div>
+                <div class="form-group">
+                    <label for="">Nama Lengkap</label>
+                    <input type="text" name="name_lengkap" class="form-control" id="name_lengkap" placeholder="Nama Lengkap">
+                </div>
+                <div>
+                    <div class="form-group">
+                        <button class="btn btn-md btn-primary">Save</button>
+                    </div>
+                </div>
               </div>
           </div>
       </div>

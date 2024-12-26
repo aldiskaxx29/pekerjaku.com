@@ -49,4 +49,8 @@ class UserRepository {
   public function delete($id){
     return $this->model->where('id', $id)->delete();
   }
+
+  public function pekerja(){
+    return $this->model->where('level_user', 3)->get();
+  }
 }

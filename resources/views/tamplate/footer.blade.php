@@ -66,6 +66,8 @@ Copyright &copy; Pekerjaku.com
 
     <!-- Js Plugins -->
     <script src="{{ asset('./js/jquery-3.3.1.min.js') }}"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap4.js"></script>
     <script src="{{ asset('./js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('./js/jquery.nice-select.min.js') }}"></script>
     <script src="{{ asset('./js/jquery-ui.min.js') }}"></script>
@@ -73,6 +75,10 @@ Copyright &copy; Pekerjaku.com
     <script src="{{ asset('./js/mixitup.min.js') }}"></script>
     <script src="{{ asset('./js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('./js/main.js') }}"></script>
+
+    {{-- https://code.jquery.com/jquery-3.7.1.js
+https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js
+https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js --}}
 
 
 

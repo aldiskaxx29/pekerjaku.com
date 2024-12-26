@@ -6,5 +6,7 @@ use Illuminate\Http\Request;
 
 class ProsedurController extends Controller
 {
-    //
+    public function index(){
+        return view('landingPage.prosedur');
+    }
 }
