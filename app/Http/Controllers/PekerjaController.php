@@ -2,22 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Service\KategoriService;
 use App\Service\PekerjaService;
+use App\Service\UserService;
 use Illuminate\Http\Request;
 
 class PekerjaController extends Controller
 {
     protected $pekerjaService;
+    protected $kategoriService;
+    protected $usersService;
 
     public function __construct(
-        PekerjaService $pekerjaService
+        PekerjaService $pekerjaService,
+        KategoriService $kategoriService,
+        UserService $userService
     )
     {
+        $this->usersService = $userService;
+        $this->kategoriService = $kategoriService;
         $this->pekerjaService = $pekerjaService;
     }
-
+        
     public function index(){
-        return view('landingpage.pekerja');
+        $pekerja = $this->pekerjaService->getAlls()->where('user.level_user', 3);
+        $kategori = $this->kategoriService->getAlls();
+        return view('landingpage.pekerja', compact('kategori', 'pekerja'));
     }
 
     public function dashboard(){
