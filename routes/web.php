@@ -51,6 +51,7 @@ Route::prefix('admin')->group(function(){
     Route::get('pekerja', [AdminController::class, 'pekerja'])->name('admin.pekerja');
     Route::get('user', [AdminController::class, 'user'])->name('admin.user');
     Route::get('lowongan', [AdminController::class, 'lowongan'])->name('admin.lowongan');
+    Route::get('order', [AdminController::class, 'order'])->name('admin.order');
 });
 
 Route::get('/pekerja', [PekerjaController::class, 'index'])->name('pekerja');

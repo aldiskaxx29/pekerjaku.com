@@ -16,7 +16,7 @@ class UserRepository {
   }
 
   public function getAll(){
-    return $this->model->get();
+    return $this->model->where('level_user', '!=', 1)->get();
   }
 
   public function getOne($id){

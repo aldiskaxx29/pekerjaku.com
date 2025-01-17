@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\LowonganController;
 use App\Http\Controllers\PekerjaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -40,6 +41,11 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('kategori/getOne', [KategoriController::class, 'getOne']);
         Route::post('kategori/save', [KategoriController::class, 'save']);
         Route::post('kategori/delete', [KategoriController::class, 'delete']);
+
+        Route::get('lowongan/getAll', [LowonganController::class, 'getAll']);
+        Route::get('lowongan/getOne', [LowonganController::class, 'getOne']);
+        Route::post('lowongan/save', [LowonganController::class, 'save']);
+        Route::post('lowongan/delete', [LowonganController::class, 'delete']);
 
         Route::get('blog/getAll', [BlogController::class, 'getAll']);
         Route::get('blog/getOne', [BlogController::class, 'getOne']);

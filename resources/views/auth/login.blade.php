@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login & Register</title>
@@ -443,8 +444,11 @@
             type: 'POST',
             data: value,
             success: function(response) {
-                console.log(response);
                 if (response.status) {
+                    localStorage.setItem('auth_token', response.access_token);
+                    if(response.data.level_user == 1)
+                    window.location.href = '/admin/dasboard';
+                    else
                     window.location.href = '/';
                 } else {
                     console.log('error',response)
@@ -457,28 +461,32 @@
         })
       });
 
-      $('#register-form').submit(function(e){
+      $('#register-form').submit(function(e) {
         e.preventDefault();
 
-        const value = $('#register-form').serialize();
-        console.log(value)
+        // Create a new FormData object
+        const formData = new FormData(this); // Automatically gathers all form fields, including files
+
         $.ajax({
             url: '/api/registrasi',
-            type:'POST',
-            data: value,
-            success: function(response){
-                if (response.status) {
-                    window.location.href = '/login';
-                } else {
-                    console.log('error',response)
-                    showAlert(response?.message, 'warning');
-                }
-            },
-            error: function(xhr, status, error){
-                console.log(xhr.responseText)
+            type: 'POST',
+            data: formData, // Send FormData instead of serialized data
+            contentType: false, // Let jQuery set the correct content type for FormData
+            processData: false, // Prevent jQuery from processing the FormData
+            success: function(response) {
+                    if (response.status) {
+                        window.location.href = '/login';
+                    } else {
+                        console.log('error', response);
+                        showAlert(response?.message, 'warning');
+                    }
+                },
+            error: function(xhr, status, error) {
+                console.log(xhr.responseText);
             }
-        })
-      })
+            });
+        });
+
     </script>
 </body>
 </html>

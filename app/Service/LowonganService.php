@@ -74,7 +74,7 @@ class LowonganService {
       $path = $this->request->file('image')->storeAs('lowongan', $name, 'public');
     }
 
-    $params['image'] = $path;
+    $params['image'] = $path ?? '';
 
     $this->lowonganRepository->save($params);
     
