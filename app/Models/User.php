@@ -30,6 +30,11 @@ class User extends Authenticatable
         'phone_number',
         'number_whatsapp',
         'image',
+        'ktp',
+        'selfiektp',
+        'ijazah',
+        'skck',
+        'buktibayar',
         'level_user',
     ];
 

@@ -27,10 +27,11 @@
     </div>
     <nav class="humberger__menu__nav mobile-menu">
         <ul style="">
-            <li class="active"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-            <li><a href="{{ route('admin.user') }}">User</a></li>
-            <li><a href="{{ route('admin.pekerja') }}">Pekerja</a></li>
-            <li><a href="{{ route('admin.lowongan') }}">Lowongan</a></li>
+            <li class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+            <li class="{{ request()->routeIs('admin.user') ? 'active' : '' }}"><a href="{{ route('admin.user') }}">User</a></li>
+            <li class="{{ request()->routeIs('admin.pekerja') ? 'active' : '' }}"><a href="{{ route('admin.pekerja') }}">Pekerja</a></li>
+            <li class="{{ request()->routeIs('admin.lowongan') ? 'active' : '' }}"><a href="{{ route('admin.lowongan') }}">Lowongan</a></li>
+            <li class="{{ request()->routeIs('admin.order') ? 'active' : '' }}"><a href="{{ route('admin.order') }}">Order</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
@@ -80,7 +81,7 @@
                             </ul>
                         </div> --}}
                         <div class="header__top__right__auth">
-                            @if (!empty(auth()->user()->id))
+                            @if (auth()->check())
                             <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                                 @csrf
                                 <button type="submit" class="btn btn-link" style="border: none; background: none; color: black; cursor: pointer;">
@@ -108,10 +109,11 @@
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul style="">
-                        <li class="active"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                        <li><a href="{{ route('admin.user') }}">User</a></li>
-                        <li><a href="{{ route('admin.pekerja') }}">Pekerja</a></li>
-                        <li><a href="{{ route('admin.lowongan') }}">Lowongan</a></li>
+                        <li class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+                        <li class="{{ request()->routeIs('admin.user') ? 'active' : '' }}"><a href="{{ route('admin.user') }}">User</a></li>
+                        <li class="{{ request()->routeIs('admin.pekerja') ? 'active' : '' }}"><a href="{{ route('admin.pekerja') }}">Pekerja</a></li>
+                        <li class="{{ request()->routeIs('admin.lowongan') ? 'active' : '' }}"><a href="{{ route('admin.lowongan') }}">Lowongan</a></li>
+                        <li class="{{ request()->routeIs('admin.order') ? 'active' : '' }}"><a href="{{ route('admin.order') }}">Order</a></li>
                     </ul>
                 </nav>
             </div>

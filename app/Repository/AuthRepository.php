@@ -23,4 +23,18 @@ class AuthRepository {
     $params['password'] = bcrypt($params['password']);
     return $this->model->create($params);
   }
+
+  public function update($id, $params) {
+    // Find the user by ID
+    $user = $this->model->find($id);
+
+    if (!$user) {
+        throw new \Exception('User not found.');
+    }
+
+    // Update the user's details
+    $user->update($params);
+
+    return $user;
+}
 }

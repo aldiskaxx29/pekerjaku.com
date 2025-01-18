@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login & Register</title>
@@ -315,6 +316,26 @@
                     <label for="register-password">WhatsApp Number</label>
                     <input type="text" name="number_whatsapp" id="register-whatsaapp" placeholder="Create a phone number" required>
                 </div>
+                <div class="input-group">
+                    <label for="register-password">Photo</label>
+                    <input type="file" name="image" id="register-whatsaapp" placeholder="Create a phone number" required>
+                </div>
+                <div class="input-group">
+                    <label  name="ktp" for="register-password">KTP</label>
+                    <input type="file" name="ktp" id="register-whatsaapp" placeholder="Create a phone number" required>
+                </div>
+                <div class="input-group">
+                    <label name="selfiektp" for="register-password">Selfie KTP</label>
+                    <input type="file" name="selfiektp" id="register-whatsaapp" placeholder="Create a phone number" required>
+                </div>
+                <div class="input-group">
+                    <label  name="skck" for="register-password">SKCK</label>
+                    <input type="file" name="skck" id="register-whatsaapp" placeholder="Create a phone number" required>
+                </div>
+                <div class="input-group">
+                    <label  name="ijazah" for="register-password">Ijazah</label>
+                    <input type="file" name="ijazah" id="register-whatsaapp" placeholder="Create a phone number" required>
+                </div>
                 <div class="actions">
                     <button type="submit" class="btn">Register</button>
                 </div>
@@ -389,11 +410,27 @@
         let value = $(this).val();
         // localStorage.setItem("level_user", value);
         $('#level_user').val(value)
+        $('input[name="ktp"]').hide()
+        $('label[name="ktp"]').hide()
+        $('input[name="selfiektp"]').hide()
+        $('label[name="selfiektp"]').hide()
+        $('input[name="skck"]').hide()
+        $('label[name="skck"]').hide()
+        $('input[name="ijazah"]').hide()
+        $('label[name="ijazah"]').hide()
       })
 
       $('#select-worker').click(function(){
         let value = $(this).val();
         $('#level_user').val(value)
+        $('input[name="ktp"]').show()
+        $('label[name="ktp"]').show()
+        $('input[name="selfiektp"]').show()
+        $('label[name="selfiektp"]').show()
+        $('input[name="skck"]').show()
+        $('label[name="skck"]').show()
+        $('input[name="ijazah"]').show()
+        $('label[name="ijazah"]').show()
         // localStorage.setItem("level_user", value);
       })
 
@@ -407,8 +444,11 @@
             type: 'POST',
             data: value,
             success: function(response) {
-                console.log(response);
                 if (response.status) {
+                    localStorage.setItem('auth_token', response.access_token);
+                    if(response.data.level_user == 1)
+                    window.location.href = '/admin/dasboard';
+                    else
                     window.location.href = '/';
                 } else {
                     console.log('error',response)
@@ -421,28 +461,32 @@
         })
       });
 
-      $('#register-form').submit(function(e){
+      $('#register-form').submit(function(e) {
         e.preventDefault();
 
-        const value = $('#register-form').serialize();
-        console.log(value)
+        // Create a new FormData object
+        const formData = new FormData(this); // Automatically gathers all form fields, including files
+
         $.ajax({
             url: '/api/registrasi',
-            type:'POST',
-            data: value,
-            success: function(response){
-                if (response.status) {
-                    window.location.href = '/login';
-                } else {
-                    console.log('error',response)
-                    showAlert(response?.message, 'warning');
-                }
-            },
-            error: function(xhr, status, error){
-                console.log(xhr.responseText)
+            type: 'POST',
+            data: formData, // Send FormData instead of serialized data
+            contentType: false, // Let jQuery set the correct content type for FormData
+            processData: false, // Prevent jQuery from processing the FormData
+            success: function(response) {
+                    if (response.status) {
+                        window.location.href = '/login';
+                    } else {
+                        console.log('error', response);
+                        showAlert(response?.message, 'warning');
+                    }
+                },
+            error: function(xhr, status, error) {
+                console.log(xhr.responseText);
             }
-        })
-      })
+            });
+        });
+
     </script>
 </body>
 </html>

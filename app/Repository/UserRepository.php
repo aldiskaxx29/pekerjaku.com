@@ -16,7 +16,7 @@ class UserRepository {
   }
 
   public function getAll(){
-    return $this->model->get();
+    return $this->model->where('level_user', '!=', 1)->get();
   }
 
   public function getOne($id){
@@ -38,6 +38,10 @@ class UserRepository {
         'phone_number' => $params['phone_number'],
         'number_whatsapp' => $params['number_whatsapp'],
         'image' => $params['image'],
+        'ktp' => $params['ktp'],
+        'selfiktp' => $params['selfiktp'],
+        'skck' => $params['skck'],
+        'ijazah' => $params['ijazah'],
         'level_user' => $params['level_user']
       ]);
     } else{
